@@ -1,0 +1,1 @@
+var app = angular.module('app.dictionary', ['ngRoute', 'ngAnimate', 'ui.bootstrap']);
