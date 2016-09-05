@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <menu></menu>
-    <router-view></router-view>
+    <div id="container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -16,5 +18,11 @@ export default {
 </script>
 
 <style>
+#container{
+  margin: 15px;
+}
 
+.form-group{
+  position:relative;
+}
 </style>

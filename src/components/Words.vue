@@ -35,12 +35,12 @@
         handler() {
           this.loadWords()
         }
-      }
+      },
       'toLang': {
         handler() {
           this.loadWords()
         }
-      }
+      },
       'letter': {
         handler() {
           this.loadWords()
@@ -50,7 +50,7 @@
     methods: {
       loadWords() {
 
-        let that = this;
+        let that = this
 
         fetch(baseUrl + 'words/' + this.type + '/' + this.fromLang + '/' + this.toLang + '/?letter=' + this.letter)
           .then(function(response) {

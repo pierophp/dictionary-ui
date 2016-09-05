@@ -28,6 +28,24 @@ router.map({
     name: 'about',
     component: AboutPage
   },
+  '/admin': {
+    name: 'admin',
+    component: function (resolve) {
+      require(['./pages/AdminPage'], resolve)
+    }
+  },
+  'admin/words': {
+    name: 'admin_words',
+    component: function (resolve) {
+      require(['./pages/admin/words/ListPage'], resolve)
+    }
+  },
+  'admin/words/create': {
+    name: 'admin_words_create',
+    component: function (resolve) {
+      require(['./pages/admin/words/CreatePage'], resolve)
+    }
+  }
 })
 
 router.alias({
