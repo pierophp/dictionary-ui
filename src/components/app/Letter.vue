@@ -1,9 +1,9 @@
 <template>
-  <a href="#words/W/pt/en/{{ letter }}">{{ letter | uppercase}}</a>
+  <a href="#words/{{ type }}/{{ fromLang }}/{{ toLang }}/{{ letter }}">{{ letter | uppercase}}</a>
 </template>
 
 <script>
   export default {
-    props: ['letter']
+    props: ['letter', 'fromLang', 'toLang', 'type']
   }
 </script>

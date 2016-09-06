@@ -8,8 +8,8 @@ export function addTranslation({ dispatch }, translation) {
   dispatch(mutations.addTranslation(translation));
 };
 
-export function setWord({ dispatch }, word) {
-  dispatch(mutations.setWord(word));
+export function update({ dispatch }, word) {
+  dispatch(mutations.update(word));
 };
 
 export function save({ dispatch }, state) {

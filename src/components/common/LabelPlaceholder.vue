@@ -17,7 +17,7 @@
   .label-placeholder {
     position: absolute;
     top: 7px;
-    left: 10px;
+    left: 14px;
     font-weight: normal;
     color: #999;
     transition: all .15s;
@@ -27,5 +27,6 @@
   .label-placeholder-fixed {
     color: inherit;
     top: -23px;
+    left: 10px;
   }
 </style>

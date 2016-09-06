@@ -8,8 +8,8 @@
     </div>
 
     <div class="form-group">
-      <label-placeholder :has-content="!!form.description" name="description">Descrição</label-placeholder>
-      <input-textarea :value.sync="form.description" name="description" ></input-textarea>
+      <label-placeholder :has-content="!!form.observation" name="observation">Observação</label-placeholder>
+      <input-textarea :value.sync="form.observation" name="observation" ></input-textarea>
     </div>
 
     <div class="form-group">
@@ -44,7 +44,7 @@
   import translationStore from '../../../stores/TranslationStore'
   import {
     addTranslation,
-    setWord,
+    update,
     save
   } from '../../../actions/TranslationActions'
 
@@ -60,7 +60,7 @@
       return {
         'form': {
           'word': '',
-          'description': '',
+          'observation': '',
           'translation': ''
         }
       }
@@ -71,7 +71,10 @@
         this.form.translation = ''
       },
       saveAction() {
-        this.setWord(this.form.word)
+        this.update({
+          word:this.form.word,
+          observation:this.form.observation
+        })
         this.save(this.$store.state)
       }
     },
@@ -81,7 +84,7 @@
       },
       actions: {
         addTranslation,
-        setWord,
+        update,
         save
       }
     }
@@ -90,7 +93,7 @@
 
 <style>
   #translations {
-    padding: 25px 0;
+    padding: 10px 0 25px;
   }
 
   form {

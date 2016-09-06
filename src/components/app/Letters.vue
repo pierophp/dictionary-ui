@@ -1,16 +1,16 @@
 <template>
   <div id="letters">
-    <letter v-for="letter in letters" :letter="letter"></letter>
+    <letter v-for="letter in letters" :letter="letter" :from-lang="fromLang" :to-lang="toLang" :type="type"></letter>
   </div>
 </template>
 
 <script>
-  import Letter from './/Letter'
+  import Letter from './Letter'
   export default {
     components: {
       Letter
     },
-    props: ['language'],
+    props: ['fromLang', 'toLang', 'type'],
     data() {
       return {
         letters: []
@@ -20,7 +20,7 @@
       this.loadLetters()
     },
     watch: {
-      'language': {
+      'fromLang': {
         handler() {
           this.loadLetters()
         }
@@ -28,7 +28,6 @@
     },
     methods: {
       loadLetters() {
-
         this.$http
           .get('letters')
           .then((response) => {

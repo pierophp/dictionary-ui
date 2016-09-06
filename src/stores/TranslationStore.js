@@ -8,7 +8,9 @@ import * as translationsMutations from '../mutations/TranslationMutations';
 const state = {
   fromLang: 'pt',
   toLang: 'en',
+  type: 'W',
   word: '',
+  observation: '',
   translations: []
 };
 
@@ -19,8 +21,9 @@ const mutations = {
   [translationsMutations.REMOVE_TRANSLATION](state, data) {
     state.translations.$remove(state.translations[data.index])
   },
-  [translationsMutations.SET_WORD](state, data) {
-    state.word = data.word
+  [translationsMutations.UPDATE](state, data) {
+    state.word = data.word.word
+    state.observation = data.word.observation
   }
 };
 
