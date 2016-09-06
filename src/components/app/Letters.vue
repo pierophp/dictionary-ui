@@ -5,10 +5,10 @@
 </template>
 
 <script>
-  import Letter from '../components/Letter'
+  import Letter from './/Letter'
   import {
     baseUrl
-  } from '../../config'
+  } from '../../../config'
   export default {
     components: {
       Letter
@@ -62,5 +62,7 @@
     line-height: 30px;
     border: 1px solid #ccc;
     text-align: center;
+    font-size: 18px;
+    margin: 0 2px;
   }
 </style>

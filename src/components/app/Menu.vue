@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import DropdownMenu from './DropdownMenu'
+  import DropdownMenu from '../common/DropdownMenu'
   export default {
     data() {
         return {

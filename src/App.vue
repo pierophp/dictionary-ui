@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Menu from './components/Menu'
+import Menu from './components/app/Menu'
 
 export default {
   components: {

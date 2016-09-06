@@ -3,10 +3,10 @@
 </template>
 
 <script>
-  import Word from '../components/Word'
+  import Word from './Word'
   import {
     baseUrl
-  } from '../../config'
+  } from '../../../config'
   export default {
     components: {
       Word

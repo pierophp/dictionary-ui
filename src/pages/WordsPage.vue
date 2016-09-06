@@ -9,8 +9,8 @@
 </template>
 
 <script>
-  import Letters from '../components/Letters'
-  import Words from '../components/Words'
+  import Letters from '../components/app/Letters'
+  import Words from '../components/app/Words'
   export default {
     components: {
       Letters,
