@@ -3,11 +3,17 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 import App from './App'
 import WordsPage from './pages/WordsPage'
 import AboutPage from './pages/AboutPage'
-
+import {
+  baseUrl
+} from '../config'
 Vue.use(VueRouter)
+Vue.use(VueResource)
+Vue.http.options.emulateJSON = true
+Vue.http.options.root = baseUrl
 
 let app = Vue.extend({
   components: { App }

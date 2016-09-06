@@ -2,7 +2,7 @@
 var path = require('path')
 
 module.exports = {
-  baseUrl: 'http://localhost:9000/',
+  baseUrl: 'http://localhost:9000',
   build: {
     env: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/index.html'),

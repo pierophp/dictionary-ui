@@ -1,7 +1,4 @@
 import * as mutations from '../mutations/TranslationMutations';
-import {
-  baseUrl
-} from '../../config'
 
 export function removeTranslation({ dispatch }, index) {
   dispatch(mutations.removeTranslation(index));
@@ -12,18 +9,11 @@ export function addTranslation({ dispatch }, translation) {
 };
 
 export function save({ dispatch }, form) {
-
-  fetch(baseUrl + 'admin/words/create', {
-    method: 'POST',
-    body: JSON.stringify(form)
-  })
+  this.$http
+    .post('admin/words/create', form)
     .then(function (response) {
-      return response.json();
-    })
-    .then(function (json) {
-      console.log('Success')
-    })
-    .catch(function (ex) {
-      console.log('parsing failed', ex)
+      console.log(response.body.word)
+    }).catch(function (ex) {
+      console.log('Exception', ex)
     });
 };
