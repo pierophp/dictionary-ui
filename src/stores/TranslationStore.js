@@ -6,8 +6,10 @@ Vue.use(Vuex);
 import * as translationsMutations from '../mutations/TranslationMutations';
 
 const state = {
+  fromLang: 'pt',
+  toLang: 'en',
   word: '',
-  translations: ['Test', 'Name', 'Piero', 'Giusti', 'AZ']
+  translations: []
 };
 
 const mutations = {
@@ -16,7 +18,14 @@ const mutations = {
   },
   [translationsMutations.REMOVE_TRANSLATION](state, data) {
     state.translations.$remove(state.translations[data.index])
+  },
+  [translationsMutations.SET_WORD](state, data) {
+    state.word = data.word
   }
 };
 
-export default new Vuex.Store({ state, mutations });
+export default new Vuex.Store({
+  strict: process.env.NODE_ENV !== 'production',
+  state: state,
+  mutations:mutations
+});

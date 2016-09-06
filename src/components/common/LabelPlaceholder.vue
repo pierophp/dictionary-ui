@@ -1,12 +1,15 @@
 <template>
-    <label :class="{ 'label-placeholder-fixed': hasContent }" class="label-placeholder">
+    <label :class="{ 'label-placeholder-fixed': hasContent }" class="label-placeholder" :for="for">
         <slot></slot>
     </label>
 </template>
 
 <script>
   export default {
-    props: ['hasContent']
+    data(){
+      return {for:  'form-' + this.name}
+    },
+    props: ['hasContent', 'name']
   }
 </script>
 
@@ -18,6 +21,7 @@
     font-weight: normal;
     color: #999;
     transition: all .15s;
+    cursor: text;
   }
 
   .label-placeholder-fixed {

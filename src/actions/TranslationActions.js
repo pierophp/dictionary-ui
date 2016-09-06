@@ -8,9 +8,13 @@ export function addTranslation({ dispatch }, translation) {
   dispatch(mutations.addTranslation(translation));
 };
 
-export function save({ dispatch }, form) {
+export function setWord({ dispatch }, word) {
+  dispatch(mutations.setWord(word));
+};
+
+export function save({ dispatch }, state) {
   this.$http
-    .post('admin/words/create', form)
+    .post('admin/words/create', state)
     .then(function (response) {
       console.log(response.body.word)
     }).catch(function (ex) {

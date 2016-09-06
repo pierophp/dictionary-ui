@@ -4,9 +4,6 @@
 
 <script>
   import Word from './Word'
-  import {
-    baseUrl
-  } from '../../../config'
   export default {
     components: {
       Word
@@ -50,18 +47,17 @@
     methods: {
       loadWords() {
 
-        let that = this
+        let resource = this.$resource('words{/type}{/fromLang}{/toLang}?letter={letter}');
 
-        fetch(baseUrl + 'words/' + this.type + '/' + this.fromLang + '/' + this.toLang + '/?letter=' + this.letter)
-          .then(function(response) {
-            return response.json();
-          })
-          .then(function(json) {
-            that.words = json;
-          })
-          .catch(function(ex) {
-            console.log('parsing failed', ex)
-          });
+        resource.get({
+          type: this.type,
+          fromLang: this.fromLang,
+          toLang: this.toLang,
+          letter: this.letter,
+        }).then((response) => {
+          this.words = response.body;
+        });
+
       }
     }
 

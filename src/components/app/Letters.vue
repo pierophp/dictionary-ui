@@ -6,9 +6,6 @@
 
 <script>
   import Letter from './/Letter'
-  import {
-    baseUrl
-  } from '../../../config'
   export default {
     components: {
       Letter
@@ -32,17 +29,13 @@
     methods: {
       loadLetters() {
 
-        let that = this
-
-        fetch(baseUrl + 'letters')
-          .then(function(response) {
-            return response.json();
-          })
-          .then(function(json) {
-            that.letters = json;
+        this.$http
+          .get('letters')
+          .then((response) => {
+            this.letters = response.body;
           })
           .catch(function(ex) {
-            console.log('parsing failed', ex)
+            console.log('Exception', ex)
           });
       }
     }
