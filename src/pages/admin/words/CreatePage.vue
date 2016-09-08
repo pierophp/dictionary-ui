@@ -29,7 +29,7 @@
       <i class="glyphicon glyphicon-ok"></i>
       Salvar
     </a>
-    <a href class="btn btn-danger">
+    <a href="#admin/words" class="btn btn-danger">
       <i class="glyphicon glyphicon-remove"></i>
       Cancelar
     </a>
@@ -40,7 +40,7 @@
   import LabelPlaceholder from '../../../components/common/LabelPlaceholder'
   import InputText from '../../../components/common/InputText'
   import InputTextarea from '../../../components/common/InputTextarea'
-  import Translation from '../../../components/app/Translation'
+  import Translation from '../../../components/admin/Translation'
   import translationStore from '../../../stores/TranslationStore'
   import {
     addTranslation,

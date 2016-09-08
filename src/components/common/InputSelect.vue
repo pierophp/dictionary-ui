@@ -1,13 +1,14 @@
 <template>
-    <input
-       type="text"
+    <select
        :name="name"
        :id="id"
        class="form-control"
        :autofocus="autofocus !== undefined ? '' : false"
        :required="required !== undefined ? '' : false"
        v-model="value"
-       autocomplete="off"/>
+       >
+       <option v-for="(index, option) in options" :value="index">{{option}}</option>
+    </select>
 </template>
 
 <script>
@@ -16,6 +17,7 @@
       'name',
       'value',
       'autofocus',
+      'options',
       'required'
     ],
     data() {
@@ -28,11 +30,11 @@
 </script>
 
 <style scoped>
-  input {
+  select {
     margin-top: 30px;
   }
 
-  .form-inline input {
+  .form-inline select {
     margin-top: 0;
   }
 </style>

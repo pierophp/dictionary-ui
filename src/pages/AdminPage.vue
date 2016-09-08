@@ -1,4 +1,4 @@
 <template>
-  Welcome to Admin Page
+    Welcome to Admin Page
    <router-view></router-view>
 </template>
