@@ -17,7 +17,7 @@
           </button>
           <ul class="dropdown-menu">
             <li>
-              <a href="#">
+              <a href="#admin/words/edit/{{item.id}}">
                 <i class="glyphicon glyphicon-pencil"></i>&nbsp;
                 Editar
               </a>

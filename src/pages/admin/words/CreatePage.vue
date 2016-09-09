@@ -1,5 +1,5 @@
 <template>
-  <h2>Criação de Palavras</h2>
+  <h2>Gerenciamento de Palavras</h2>
   <form>
 
     <div class="form-group">
@@ -44,6 +44,7 @@
   import translationStore from '../../../stores/TranslationStore'
   import {
     addTranslation,
+    setTranslations,
     update,
     save
   } from '../../../actions/TranslationActions'
@@ -65,6 +66,29 @@
         }
       }
     },
+    ready() {
+      if (this.$route.params.id) {
+        this.$http
+          .post('admin/words/find', {
+            id: this.$route.params.id
+          })
+          .then(function(response) {
+            let data = response.body.data
+            this.form.word = data.word.text
+            this.form.observation = data.translation.observation
+
+            let translations = [];
+            for(let translationWord of data.translationsWords){
+              translations.push(translationWord.text)
+            }
+
+            this.setTranslations(translations)
+
+          }).catch(function(ex) {
+            console.log('Exception', ex)
+          });
+      }
+    },
     methods: {
       addAction() {
         this.addTranslation(this.form.translation)
@@ -72,8 +96,8 @@
       },
       saveAction() {
         this.update({
-          word:this.form.word,
-          observation:this.form.observation
+          word: this.form.word,
+          observation: this.form.observation
         })
         this.save(this.$store.state)
       }
@@ -84,6 +108,7 @@
       },
       actions: {
         addTranslation,
+        setTranslations,
         update,
         save
       }
@@ -100,7 +125,7 @@
     min-width: 500px;
   }
 
-  .add-translation{
+  .add-translation {
     margin-top: 15px;
   }
 </style>

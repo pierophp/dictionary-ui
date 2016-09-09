@@ -4,7 +4,6 @@
        :name="name"
        :id="id"
        class="form-control"
-       :autofocus="autofocus !== undefined ? '' : false"
        :required="required !== undefined ? '' : false"
        v-model="value"
        autocomplete="off"/>
@@ -21,6 +20,11 @@
     data() {
       return {
         id: 'form-' + this.name
+      }
+    },
+    ready() {
+      if (this.autofocus !== undefined) {
+        this.$el.focus()
       }
     }
 

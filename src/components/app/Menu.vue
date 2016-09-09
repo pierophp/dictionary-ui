@@ -1,18 +1,20 @@
 <template>
   <div class="navbar navbar-inverse">
+    <div id="menu-container">
 
         <a class="navbar-brand" href="#/">
-               Dicionário
+              Dicionário
         </a>
 
         <a class="navbar-brand" href="#/about">
-               Sobre
+              Sobre
         </a>
 
         <ul class="nav navbar-nav">
             <dropdown-menu v-for="menu in menus" :title="menu.title" :links="menu.links"></dropdown-menu>
         </ul>
     </div>
+</div>
 </template>
 
 <script>
@@ -33,10 +35,10 @@
             title: 'Frases',
             links: [{
               title: 'Ticuna -> Português',
-              url: '#words/F/en/pt/a'
+              url: '#words/P/en/pt/a'
             }, {
               title: 'Português -> Ticuna',
-              url: '#words/F/pt/en/a'
+              url: '#words/P/pt/en/a'
             }]
           }]
         }
@@ -48,3 +50,13 @@
 
   $('.dropdown-toggle').dropdown()
 </script>
+
+<style>
+  .navbar{
+    margin-bottom: 0;
+  }
+  #menu-container {
+    margin: auto;
+    max-width: 1160px;
+  }
+</style>

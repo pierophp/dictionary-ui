@@ -21,6 +21,9 @@ const mutations = {
   [translationsMutations.REMOVE_TRANSLATION](state, data) {
     state.translations.$remove(state.translations[data.index])
   },
+  [translationsMutations.SET_TRANSLATIONS](state, data) {
+    state.translations = data.translations
+  },
   [translationsMutations.UPDATE](state, data) {
     state.word = data.word.word
     state.observation = data.word.observation

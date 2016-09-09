@@ -8,6 +8,10 @@ export function addTranslation({ dispatch }, translation) {
   dispatch(mutations.addTranslation(translation));
 };
 
+export function setTranslations({ dispatch }, translations) {
+  dispatch(mutations.setTranslations(translations));
+};
+
 export function update({ dispatch }, word) {
   dispatch(mutations.update(word));
 };

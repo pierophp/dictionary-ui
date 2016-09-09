@@ -51,6 +51,12 @@ router.map({
     component: function (resolve) {
       require(['./pages/admin/words/CreatePage'], resolve)
     }
+  },
+  'admin/words/edit/:id': {
+    name: 'admin_words_edit',
+    component: function (resolve) {
+      require(['./pages/admin/words/CreatePage'], resolve)
+    }
   }
 })
 
