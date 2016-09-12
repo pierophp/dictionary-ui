@@ -12,7 +12,6 @@
 
 <script>
   import Menu from './components/app/Menu'
-
   export default {
     components: {
       Menu
@@ -25,8 +24,6 @@
     background-color: #f7f7f7;
   }
 
-  #app {}
-
   #container {
     max-width: 1160px;
     margin: auto;
@@ -35,8 +32,7 @@
 
   #content h2 {
     margin: 8px 5px 0;
-
- }
+  }
 
   .form-group {
     position: relative;

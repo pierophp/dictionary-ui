@@ -28,6 +28,11 @@
     },
     methods: {
       loadLetters() {
+
+        if(!this.fromLang){
+          return;
+        }
+
         this.$http
           .get('letters')
           .then((response) => {
@@ -45,6 +50,7 @@
 <style scoped>
   #letters {
     text-align: center;
+    margin-top: 15px;
   }
 
   #letters a {

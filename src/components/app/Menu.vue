@@ -1,62 +1,48 @@
 <template>
-  <div class="navbar navbar-inverse">
-    <div id="menu-container">
-
-        <a class="navbar-brand" href="#/">
-              Dicionário
-        </a>
-
-        <a class="navbar-brand" href="#/about">
-              Sobre
-        </a>
-
-        <ul class="nav navbar-nav">
-            <dropdown-menu v-for="menu in menus" :title="menu.title" :links="menu.links"></dropdown-menu>
-        </ul>
-    </div>
-</div>
+    <side-menu
+    :items="items"
+    :visible="true"
+    title="Dicionário Ticuna"
+    width="300px"
+  ></side-menu>
 </template>
 
 <script>
-  import DropdownMenu from '../common/DropdownMenu'
+  import SideMenu from '../common/SideMenu'
   export default {
     data() {
-        return {
-          menus: [{
-            title: 'Palavras',
-            links: [{
-              title: 'Ticuna -> Português',
-              url: '#words/W/en/pt/a'
-            }, {
-              title: 'Português -> Ticuna',
-              url: '#words/W/pt/en/a'
-            }]
-          }, {
-            title: 'Frases',
-            links: [{
-              title: 'Ticuna -> Português',
-              url: '#words/P/en/pt/a'
-            }, {
-              title: 'Português -> Ticuna',
-              url: '#words/P/pt/en/a'
-            }]
-          }]
-        }
-      },
-      components: {
-        DropdownMenu
-      },
+      return {
+        items: [{
+          'url': '/words',
+          'title': 'Dicionário'
+        }, {
+          'url': '/about',
+          'title': 'Sobre'
+        }, {
+          'url': '/words/W/en/pt/a',
+          'title': 'Palavras - Ticuna -> Português',
+          'regex': 'words/W/en/pt/[a-z]',
+        }, {
+          'url': '/words/W/pt/en/a',
+          'title': 'Palavras - Português -> Ticuna',
+          'regex': 'words/W/pt/en/[a-z]',
+        }, {
+          'url': '/words/P/en/pt/a',
+          'title': 'Frases - Ticuna -> Português',
+          'regex': 'words/P/en/pt/[a-z]',
+        }, {
+          'url': '/words/P/pt/en/a',
+          'title': 'Frases - Português -> Ticuna',
+          'regex': 'words/P/pt/en/[a-z]',
+        }]
+      }
+    },
+    components: {
+      SideMenu
+    },
   }
-
-  $('.dropdown-toggle').dropdown()
 </script>
 
 <style>
-  .navbar{
-    margin-bottom: 0;
-  }
-  #menu-container {
-    margin: auto;
-    max-width: 1160px;
-  }
+
 </style>

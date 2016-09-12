@@ -72,7 +72,7 @@
           .post('admin/words/find', {
             id: this.$route.params.id
           })
-          .then(function(response) {
+          .then((response) => {
             let data = response.body.data
             this.form.word = data.word.text
             this.form.observation = data.translation.observation
@@ -84,8 +84,9 @@
 
             this.setTranslations(translations)
 
-          }).catch(function(ex) {
-            console.log('Exception', ex)
+          })
+          .catch((error) => {
+            console.log('Exception ', error)
           });
       }
     },

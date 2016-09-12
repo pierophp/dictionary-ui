@@ -18,7 +18,7 @@ export function update({ dispatch }, word) {
 
 export function save({ dispatch }, state) {
   this.$http
-    .post('admin/words/create', state)
+    .post('admin/words/save', state)
     .then(function (response) {
       console.log(response.body.word)
     }).catch(function (ex) {

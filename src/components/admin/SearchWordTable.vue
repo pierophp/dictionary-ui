@@ -23,7 +23,7 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href @click.prevent="showDeleteModal(item.id)">
                 <i class="glyphicon glyphicon-trash"></i>&nbsp;
                 Apagar
               </a>
@@ -41,7 +41,12 @@
     filters: {
       wordType: WordTypeFilter
     },
-    props: ['items']
+    props: ['items'],
+    methods: {
+      showDeleteModal(id) {
+        this.$dispatch('showDeleteModal', id)
+      }
+    }
   }
 </script>
 

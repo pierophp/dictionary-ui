@@ -1,5 +1,5 @@
 <template>
-  <form class="form-inline" @submit="search">
+  <form class="form-inline" @submit.prevent="search">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Busca</h3>
@@ -29,46 +29,41 @@
   </form>
 </template>
 <script>
-
   import LabelPlaceholder from '../common/LabelPlaceholder'
   import InputText from '../common/InputText'
   import InputSelect from '../common/InputSelect'
   import ObjectToList from '../common/ObjectToList'
-
   export default {
     data() {
-        return {
-          languages: [],
-          types: {
-            '': '',
-            'W': 'Palavra',
-            'P': 'Frase'
-          }
+      return {
+        languages: [],
+        types: {
+          '': '',
+          'W': 'Palavra',
+          'P': 'Frase'
         }
-      },
-      ready() {
-        this.$http
-          .get('languages/all')
-          .then(function(response) {
-
-            this.languages = ObjectToList(response.body.data, 'id', 'name')
-
-          }).catch(function(ex) {
-            console.log('Exception', ex)
-          });
-      },
-      props: ['form'],
-      methods: {
-        search(e) {
-          e.preventDefault()
-          this.$dispatch('search', this.form)
-        }
-      },
-      components: {
-        LabelPlaceholder,
-        InputText,
-        InputSelect
       }
+    },
+    ready() {
+      this.$http
+        .get('languages/all')
+        .then(function(response) {
+          this.languages = ObjectToList(response.body.data, 'id', 'name')
+        }).catch(function(ex) {
+          console.log('Exception', ex)
+        });
+    },
+    props: ['form'],
+    methods: {
+      search() {
+        this.$dispatch('search', this.form)
+      }
+    },
+    components: {
+      LabelPlaceholder,
+      InputText,
+      InputSelect
+    }
   }
 </script>
 

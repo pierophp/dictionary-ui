@@ -47,6 +47,10 @@
     methods: {
       loadWords() {
 
+        if (!this.letter) {
+          return;
+        }
+
         let resource = this.$resource('words{/type}{/fromLang}{/toLang}?letter={letter}');
 
         resource.get({
@@ -56,6 +60,8 @@
           letter: this.letter,
         }).then((response) => {
           this.words = response.body;
+        }).catch((error) => {
+          console.log(error)
         });
 
       }
