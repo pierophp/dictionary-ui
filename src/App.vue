@@ -7,6 +7,9 @@
         <div class="clearfix"></div>
       </div>
     </div>
+    <footer>
+      Teste
+    </footer>
   </div>
 </template>
 
@@ -25,9 +28,18 @@
   }
 
   #container {
-    max-width: 1160px;
-    margin: auto;
     background-color: #fff;
+    float:left;
+    margin: auto;
+    width: calc(100% - 80px);
+  }
+
+  #menu.visible + #container{
+    width: calc(100% - 320px);
+  }
+
+  #app {
+    overflow: auto;
   }
 
   #content h2 {

@@ -82,77 +82,77 @@
 </script>
 
 <style scoped>
-  #menu {
-    float: left;
-    height: 100%;
-    margin-right: 20px;
-    position: relative;
-  }
+ #menu {
+   float: left;
+   height: 100vh;
+   margin-right: 20px;
+   position: relative;
+ }
 
-  #menu.visible {
-    margin-left: 0;
-  }
+ .menu-inner {
+   background-color: #ddd;
+   height: 100%;
+   left: 0;
+   position: absolute;
+   top: 0;
+   transform: translateX(-83%);
+   transition: all .2s;
+   width: 100%;
+   vertical-align: top;
+ }
 
-  .menu-inner {
-    background-color: #ddd;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    transform: translateX(-83%);
-    transition: all .2s;
-    width: 100%;
-  }
+ #menu.visible .menu-inner {
+   transform: translateX(0);
+ }
 
-  #menu.visible .menu-inner {
-    transform: translateX(0);
-  }
+ .btn.toggle-menu-button {
+   color: #666;
+   font-size: 1.2em;
+   line-height: 1;
+   position: absolute;
+   right: 5px;
+   top: 5px;
+ }
 
-  .btn.toggle-menu-button {
-    color: #666;
-    font-size: 1.2em;
-    line-height: 1;
-    position: absolute;
-    right: 5px;
-    top: 5px;
-  }
+ #menu h1 {
+   font-size: 1.5em;
+   font-weight: bold;
+   margin-left: 20px;
+   margin-top: 0;
+   padding-top: 10px;
+   text-align: left;
+ }
 
-  #menu h1 {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-left: 20px;
-    margin-top: 0;
-    padding-top: 10px;
-    text-align: left;
-  }
+ #menu ul {
+   display: none;
+   margin: 40px auto 0;
+   padding: 0;
+   width: 90%;
+ }
 
-  #menu ul {
-    margin: 40px auto 0;
-    padding: 0;
-    width: 90%;
-  }
+ #menu.visible ul {
+   display: block;
+ }
 
-  .menu-item {
-    list-style: none;
-  }
+ .menu-item {
+   list-style: none;
+ }
 
-  #menu.visible .menu-item a {
-    border-bottom: 1px solid #2c3e50;
-  }
+ .menu-item a {
+   border-bottom: 1px solid #2c3e50 ;
+   color: #2c3e50 ;
+   display: block;
+   font-size: 1.2em;
+   list-style: none;
+   padding: 2% 2% 2% 10%;
+   text-align: left;
+   width: 100%;
+ }
 
-  .menu-item a {
-    color: #2c3e50 !important;
-    display: block;
-    font-size: 1.2em;
-    list-style: none;
-    padding: 2% 2% 2% 10%;
-    text-align: left;
-    width: 100%;
-  }
-
-  #menu.visible .menu-item a:hover,
-  #menu.visible .menu-item a.active {
-    background-color: #2c3e50;
-    color: #fff !important;
-  }
+ #menu.visible .menu-item a:hover,
+ #menu.visible .menu-item a.active {
+   background-color: #2c3e50 ;
+   color: #fff;
+   text-decoration: none;
+ }
 </style>

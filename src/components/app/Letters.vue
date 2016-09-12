@@ -29,7 +29,7 @@
     methods: {
       loadLetters() {
 
-        if(!this.fromLang){
+        if (!this.fromLang) {
           return;
         }
 
@@ -50,7 +50,7 @@
 <style scoped>
   #letters {
     text-align: center;
-    margin-top: 15px;
+    padding-top: 15px;
   }
 
   #letters a {
@@ -62,5 +62,11 @@
     text-align: center;
     font-size: 18px;
     margin: 0 2px;
+  }
+
+  #letters a.active {
+    background: #337ab7;
+    color: #fff;
+    text-decoration: none;
   }
 </style>
