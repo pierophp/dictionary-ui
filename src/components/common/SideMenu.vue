@@ -20,14 +20,16 @@
       <h1>
         {{ title }}
       </h1>
-
-      <ul>
-        <li class="menu-item" v-for="item in items">
-          <a v-link="{ path: item.url }" v-menu-active="{ path: item.url, regex: item.regex }">
-            {{ item.title }}
-          </a>
-        </li>
-      </ul>
+      <div class="content">
+        <slot></slot>
+        <ul>
+          <li class="menu-item" v-for="item in items">
+            <a v-link="{ path: item.url }" v-menu-active="{ path: item.url, regex: item.regex }">
+              {{ item.title }}
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </aside>
 </template>
@@ -81,16 +83,15 @@
   }
 </script>
 
-<style scoped>
+<style>
  #menu {
-   float: left;
    height: 100vh;
    margin-right: 20px;
-   position: relative;
+   position: fixed;
  }
 
  .menu-inner {
-   background-color: #ddd;
+   background-color: #eee;
    height: 100%;
    left: 0;
    position: absolute;
@@ -124,13 +125,16 @@
  }
 
  #menu ul {
-   display: none;
-   margin: 40px auto 0;
    padding: 0;
-   width: 90%;
  }
 
- #menu.visible ul {
+ #menu .content {
+   margin: 20px auto 0;
+   width: 90%;
+   display: none;
+ }
+
+ #menu.visible .content {
    display: block;
  }
 
@@ -151,8 +155,16 @@
 
  #menu.visible .menu-item a:hover,
  #menu.visible .menu-item a.active {
-   background-color: #2c3e50 ;
+   background-color: #337ab7;
    color: #fff;
    text-decoration: none;
+ }
+
+ #menu + * {
+   margin-left: 80px;
+ }
+
+ #menu.visible + * {
+   margin-left: 330px;
  }
 </style>

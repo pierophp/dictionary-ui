@@ -54,11 +54,13 @@
   }
 
   #letters a {
+  border: 1px solid #ccc;
+    border-radius: 5px;
     display: inline-block;
     width: 30px;
     height: 30px;
     line-height: 30px;
-    border: 1px solid #ccc;
+
     text-align: center;
     font-size: 18px;
     margin: 0 2px;

@@ -5,6 +5,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import App from './App'
+import IndexPage from './pages/IndexPage'
 import WordsPage from './pages/WordsPage'
 import AboutPage from './pages/AboutPage'
 import {
@@ -22,6 +23,10 @@ let app = Vue.extend({
 let router = new VueRouter()
 
 router.map({
+  '/': {
+    name: 'index',
+    component: IndexPage
+  },
   '/words': {
     name: 'words',
     component: WordsPage
@@ -60,8 +65,5 @@ router.map({
   }
 })
 
-router.alias({
-  '/': '/words'
-})
 
 router.start(app, 'body')

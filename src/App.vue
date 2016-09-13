@@ -29,13 +29,7 @@
 
   #container {
     background-color: #fff;
-    float:left;
     margin: auto;
-    width: calc(100% - 80px);
-  }
-
-  #menu.visible + #container{
-    width: calc(100% - 320px);
   }
 
   #app {

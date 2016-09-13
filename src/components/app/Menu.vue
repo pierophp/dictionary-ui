@@ -4,7 +4,11 @@
     :visible="true"
     title="Dicionário Ticuna"
     width="300px"
-  ></side-menu>
+  >
+  <form id="form-search">
+    <input type="text" class="form-control" placeholder="Busca"/>
+  </form>
+  </side-menu>
 </template>
 
 <script>
@@ -13,11 +17,8 @@
     data() {
       return {
         items: [{
-          'url': '/words',
+          'url': '/',
           'title': 'Dicionário'
-        }, {
-          'url': '/about',
-          'title': 'Sobre'
         }, {
           'url': '/words/W/en/pt/a',
           'title': 'Palavras - Ticuna -> Português',
@@ -34,6 +35,9 @@
           'url': '/words/P/pt/en/a',
           'title': 'Frases - Português -> Ticuna',
           'regex': 'words/P/pt/en/[a-z]',
+        }, {
+          'url': '/about',
+          'title': 'Sobre'
         }]
       }
     },
@@ -43,6 +47,8 @@
   }
 </script>
 
-<style>
-
+<style scoped>
+  #form-search{
+    margin-bottom: 15px;
+  }
 </style>
