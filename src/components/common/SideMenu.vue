@@ -3,7 +3,6 @@
     id="menu"
     :class="{'visible': isVisible}"
     :style="{'padding-right': width}"
-    v-on:click="togglePadding"
   >
     <div
       class="menu-inner"
@@ -12,7 +11,7 @@
       <button
         type="button"
         class="toggle-menu-button btn"
-        v-on:click="toggleVisible"
+        @click="toggleVisible"
       >
         <i class="glyphicon glyphicon-menu-hamburger"></i>
       </button>
@@ -20,14 +19,12 @@
       <h1>
         {{ title }}
       </h1>
-      <div class="content">
+      <div class="menu-content">
+        <div class="menu-slot">
         <slot></slot>
-        <ul>
-          <li class="menu-item" v-for="item in items">
-            <a v-link="{ path: item.url }" v-menu-active="{ path: item.url, regex: item.regex }">
-              {{ item.title }}
-            </a>
-          </li>
+        </div>
+        <ul class="menu-list">
+          <item :model="items"></item>
         </ul>
       </div>
     </div>
@@ -35,7 +32,7 @@
 </template>
 
 <script>
-  import MenuActive from '../../directives/MenuActive'
+  import Item from './SideMenuItem'
   export default {
     props: {
       'items': {
@@ -55,11 +52,10 @@
         default: '300px'
       }
     },
-    directives: {
-      menuActive: MenuActive
+    components: {
+      Item
     },
     data() {
-
       return {
         isVisible: this.visible,
         definedWidth: null
@@ -84,87 +80,118 @@
 </script>
 
 <style>
- #menu {
-   height: 100vh;
-   margin-right: 20px;
-   position: fixed;
- }
+  #menu {
+    height: 100vh;
+    margin-right: 20px;
+    position: fixed;
+  }
 
- .menu-inner {
-   background-color: #eee;
-   height: 100%;
-   left: 0;
-   position: absolute;
-   top: 0;
-   transform: translateX(-83%);
-   transition: all .2s;
-   width: 100%;
-   vertical-align: top;
- }
+  .menu-inner {
+    background-color: #eee;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translateX(-83%);
+    transition: all .2s;
+    width: 100%;
+    vertical-align: top;
+  }
 
- #menu.visible .menu-inner {
-   transform: translateX(0);
- }
+  #menu.visible .menu-inner {
+    transform: translateX(0);
+  }
 
- .btn.toggle-menu-button {
-   color: #666;
-   font-size: 1.2em;
-   line-height: 1;
-   position: absolute;
-   right: 5px;
-   top: 5px;
- }
+  .btn.toggle-menu-button {
+    color: #666;
+    font-size: 1.2em;
+    line-height: 1;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
 
- #menu h1 {
-   font-size: 1.5em;
-   font-weight: bold;
-   margin-left: 20px;
-   margin-top: 0;
-   padding-top: 10px;
-   text-align: left;
- }
+  #menu h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 0;
+    padding-top: 10px;
+    text-align: left;
+  }
 
- #menu ul {
-   padding: 0;
- }
+  #menu .menu-list {
+    padding: 0;
+  }
 
- #menu .content {
-   margin: 20px auto 0;
-   width: 90%;
-   display: none;
- }
+  #menu .menu-content {
+    display: none;
+    margin: 40px auto 0;
+  }
 
- #menu.visible .content {
-   display: block;
- }
+  #menu .menu-slot{
+    padding: 0px 15px;
+  }
 
- .menu-item {
-   list-style: none;
- }
+  #menu.visible .menu-content {
+    display: block;
+  }
 
- .menu-item a {
-   border-bottom: 1px solid #2c3e50 ;
-   color: #2c3e50 ;
-   display: block;
-   font-size: 1.2em;
-   list-style: none;
-   padding: 2% 2% 2% 10%;
-   text-align: left;
-   width: 100%;
- }
+  .menu-item,
+  .menu-item.has-submenu>div {
+    color: #2c3e50;
+    display: block;
+    font-size: 1.6rem;
+    list-style: none;
+    text-align: left;
+    width: 100%;
+  }
 
- #menu.visible .menu-item a:hover,
- #menu.visible .menu-item a.active {
-   background-color: #337ab7;
-   color: #fff;
-   text-decoration: none;
- }
+  .menu-item a,
+  .menu-item.has-submenu>div {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 2% 2% 2% 10%;
+    color: inherit;
+  }
 
- #menu + * {
-   margin-left: 80px;
- }
+  .has-submenu ul {
+    padding: 0;
+  }
 
- #menu.visible + * {
-   margin-left: 330px;
- }
+  .has-submenu ul li a {
+    padding-left: 45px;
+  }
+
+  .has-submenu>div {
+    cursor: pointer;
+  }
+
+  .menu-item{
+  }
+
+  .has-submenu .menu-item a{
+
+  }
+
+  #menu.visible .menu-item:not(.has-submenu):hover a,
+  #menu.visible .menu-item.has-submenu>div:hover,
+  #menu.visible .menu-item a.active {
+    background-color: #337ab7;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  #menu + * {
+    margin-left: 80px;
+  }
+
+  #menu.visible+* {
+    margin-left: 330px;
+  }
+
+  #menu .show-submenu{
+    float: right;
+  }
 </style>

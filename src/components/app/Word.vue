@@ -1,11 +1,14 @@
 <template>
   <div class="word">
-    <b>{{ word.text }} - </b> {{ word.translation.observation }}
-    <ul>
-        <li v-for="translationWord in word.translation.words">
+    <div>
+      <span class="label label-primary main-word">{{ word.text }}</span>
+      {{ word.translation.observation }}
+    </div>
+    <div class="translations">
+        <span v-for="translationWord in word.translation.words" class="label label-success translation-word">
             {{ translationWord.text }}
-        </li>
-    </ul>
+        </span>
+    </div>
   </div>
 </template>
 
@@ -16,11 +19,23 @@
 </script>
 
 <style scoped>
-.word {
+  .word {
+    border-bottom: 1px solid #ccc;
     font-size: 14px;
-    border: 1px solid #ccc;
-    padding: 15px;
     margin-top: 10px;
-    border-radius: 5px;
-}
+    padding: 15px;
+  }
+
+  .main-word{
+    font-size: 18px;
+  }
+
+  .translation-word{
+    font-size: 15px;
+    margin-right: 6px;
+  }
+
+  .translations{
+    padding-top: 15px
+  }
 </style>

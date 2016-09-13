@@ -19,9 +19,10 @@ export function update({ dispatch }, word) {
 export function save({ dispatch }, state) {
   this.$http
     .post('admin/words/save', state)
-    .then(function (response) {
+    .then((response) => {
       console.log(response.body.word)
-    }).catch(function (ex) {
+    })
+    .catch(function (ex) {
       console.log('Exception', ex)
     });
 };

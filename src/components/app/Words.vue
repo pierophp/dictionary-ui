@@ -70,17 +70,6 @@
   }
 </script>
 
-<style scoped>
-  #letters {
-    text-align: center;
-  }
+<style [>
 
-  #letters a {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    border: 1px solid #ccc;
-    text-align: center;
-  }
 </style>

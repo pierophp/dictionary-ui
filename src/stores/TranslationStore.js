@@ -8,7 +8,7 @@ import * as translationsMutations from '../mutations/TranslationMutations';
 const state = {
   fromLang: 'pt',
   toLang: 'en',
-  type: 'W',
+  type: '',
   word: '',
   observation: '',
   translations: []
@@ -25,6 +25,7 @@ const mutations = {
     state.translations = data.translations
   },
   [translationsMutations.UPDATE](state, data) {
+    state.type = data.word.type
     state.word = data.word.word
     state.observation = data.word.observation
   }

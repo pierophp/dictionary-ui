@@ -8,6 +8,11 @@
     </div>
 
     <div class="form-group">
+      <label-placeholder :has-content="!!form.type" name="type">Tipo</label-placeholder>
+      <input-select :value.sync="form.type" :options="types" name="type" required></input-select>
+    </div>
+
+    <div class="form-group">
       <label-placeholder :has-content="!!form.observation" name="observation">Observação</label-placeholder>
       <input-textarea :value.sync="form.observation" name="observation" ></input-textarea>
     </div>
@@ -39,6 +44,7 @@
 <script>
   import LabelPlaceholder from '../../../components/common/LabelPlaceholder'
   import InputText from '../../../components/common/InputText'
+  import InputSelect from '../../../components/common/InputSelect'
   import InputTextarea from '../../../components/common/InputTextarea'
   import Translation from '../../../components/admin/Translation'
   import translationStore from '../../../stores/TranslationStore'
@@ -54,6 +60,7 @@
     components: {
       LabelPlaceholder,
       InputText,
+      InputSelect,
       InputTextarea,
       Translation
     },
@@ -61,8 +68,14 @@
       return {
         'form': {
           'word': '',
+          'type': '',
           'observation': '',
           'translation': ''
+        },
+        types: {
+          '': '',
+          'W': 'Palavra',
+          'P': 'Frase'
         }
       }
     },
@@ -78,7 +91,7 @@
             this.form.observation = data.translation.observation
 
             let translations = [];
-            for(let translationWord of data.translationsWords){
+            for (let translationWord of data.translationsWords) {
               translations.push(translationWord.text)
             }
 
@@ -117,13 +130,13 @@
   }
 </script>
 
-<style>
+<style scoped>
   #translations {
     padding: 10px 0 25px;
   }
 
   form {
-    min-width: 500px;
+    max-width: 500px;
   }
 
   .add-translation {

@@ -6,18 +6,19 @@
         <router-view></router-view>
         <div class="clearfix"></div>
       </div>
+      <app-footer></app-footer>
     </div>
-    <footer>
-      Teste
-    </footer>
+
   </div>
 </template>
 
 <script>
   import Menu from './components/app/Menu'
+  import AppFooter from './components/app/Footer'
   export default {
     components: {
-      Menu
+      Menu,
+      AppFooter
     }
   }
 </script>
@@ -34,6 +35,14 @@
 
   #app {
     overflow: auto;
+  }
+
+  #content {
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    margin-right: 30px;
+    min-height: calc(100vh - 30px);
+    padding: 0px 20px;
   }
 
   #content h2 {
