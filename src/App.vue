@@ -3,7 +3,7 @@
     <menu></menu>
     <div id="container">
       <div id="content">
-        <router-view></router-view>
+        <router-view transition="fade" transition-mode="out-in" class="animated"></router-view>
         <div class="clearfix"></div>
       </div>
       <app-footer></app-footer>
@@ -51,5 +51,9 @@
 
   .form-group {
     position: relative;
+  }
+
+  .animated {
+    animation-duration: .25s;
   }
 </style>

@@ -1,10 +1,12 @@
 <template>
-  <h2>Lista de Palavras</h2>
-  <search-word-form :form.sync="form"></search-word-form>
-  <pagination :pagination="pagination" :callback="search" :offset="4"></pagination>
-  <search-word-table :items="items"></search-word-table>
-  <pagination :pagination="pagination" :callback="search" :offset="4"></pagination>
-  <modal title="Confirmação" id="modal-delete" :callback="delete">Tem certeza que deseja apagar?</modal>
+  <div>
+    <h2>Lista de Palavras</h2>
+    <search-word-form :form.sync="form"></search-word-form>
+    <pagination :pagination="pagination" :callback="search" :offset="4"></pagination>
+    <search-word-table :items="items"></search-word-table>
+    <pagination :pagination="pagination" :callback="search" :offset="4"></pagination>
+    <modal title="Confirmação" id="modal-delete" :callback="delete">Tem certeza que deseja apagar?</modal>
+  </div>
 </template>
 
 <script>

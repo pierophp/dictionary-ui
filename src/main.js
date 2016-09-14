@@ -1,5 +1,8 @@
 import 'bootstrap/dist/js/bootstrap.js'
 import 'bootstrap/dist/css/bootstrap.css'
+import 'animate.css/source/_base.css'
+import 'animate.css/source/fading_entrances/fadeIn.css'
+import 'animate.css/source/fading_exits/fadeOut.css'
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -15,6 +18,7 @@ Vue.use(VueRouter)
 Vue.use(VueResource)
 Vue.http.options.emulateJSON = true
 Vue.http.options.root = baseUrl
+Vue.transition('fade', { enterClass: 'fadeIn', leaveClass: 'fadeOut' })
 
 let app = Vue.extend({
   components: { App }

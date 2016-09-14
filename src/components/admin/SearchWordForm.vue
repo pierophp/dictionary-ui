@@ -49,7 +49,8 @@
         .get('languages/all')
         .then(function(response) {
           this.languages = ObjectToList(response.body.data, 'id', 'name')
-        }).catch(function(ex) {
+        })
+        .catch(function(ex) {
           console.log('Exception', ex)
         });
     },

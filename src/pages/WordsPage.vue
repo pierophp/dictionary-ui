@@ -1,15 +1,17 @@
 <template>
-  <letters
-      :type="$route.params.type"
-      :from-lang="$route.params.fromLang"
-      :to-lang="$route.params.toLang"
-  ></letters>
-  <words
-      :type="$route.params.type"
-      :from-lang="$route.params.fromLang"
-      :to-lang="$route.params.toLang"
-      :letter="$route.params.letter"
-  ></words>
+  <div>
+    <letters
+        :type="$route.params.type"
+        :from-lang="$route.params.fromLang"
+        :to-lang="$route.params.toLang"
+    ></letters>
+    <words
+        :type="$route.params.type"
+        :from-lang="$route.params.fromLang"
+        :to-lang="$route.params.toLang"
+        :letter="$route.params.letter"
+    ></words>
+  </div>
 </template>
 
 <script>

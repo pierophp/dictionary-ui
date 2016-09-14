@@ -1,44 +1,46 @@
 <template>
-  <h2>Gerenciamento de Palavras</h2>
-  <form>
+  <div>
+    <h2>Gerenciamento de Palavras</h2>
+    <form>
 
-    <div class="form-group">
-      <label-placeholder :has-content="!!form.word" name="word">Palavra</label-placeholder>
-      <input-text :value.sync="form.word" autofocus name="word"></input-text>
-    </div>
+      <div class="form-group">
+        <label-placeholder :has-content="!!form.word" name="word">Palavra</label-placeholder>
+        <input-text :value.sync="form.word" autofocus name="word"></input-text>
+      </div>
 
-    <div class="form-group">
-      <label-placeholder :has-content="!!form.type" name="type">Tipo</label-placeholder>
-      <input-select :value.sync="form.type" :options="types" name="type" required></input-select>
-    </div>
+      <div class="form-group">
+        <label-placeholder :has-content="!!form.type" name="type">Tipo</label-placeholder>
+        <input-select :value.sync="form.type" :options="types" name="type" required></input-select>
+      </div>
 
-    <div class="form-group">
-      <label-placeholder :has-content="!!form.observation" name="observation">Observação</label-placeholder>
-      <input-textarea :value.sync="form.observation" name="observation" ></input-textarea>
-    </div>
+      <div class="form-group">
+        <label-placeholder :has-content="!!form.observation" name="observation">Observação</label-placeholder>
+        <input-textarea :value.sync="form.observation" name="observation" ></input-textarea>
+      </div>
 
-    <div class="form-group">
-      <label-placeholder :has-content="!!form.translation" name="translation">Nova Tradução</label-placeholder>
-      <input-text :value.sync="form.translation" name="translation"></input-text>
-      <a href="javascript:void(0)" class="btn btn-primary add-translation" @click="addAction">
-        <i class="glyphicon glyphicon-plus"></i>
-        Adicionar
+      <div class="form-group">
+        <label-placeholder :has-content="!!form.translation" name="translation">Nova Tradução</label-placeholder>
+        <input-text :value.sync="form.translation" name="translation"></input-text>
+        <a href="javascript:void(0)" class="btn btn-primary add-translation" @click="addAction">
+          <i class="glyphicon glyphicon-plus"></i>
+          Adicionar
+        </a>
+      </div>
+
+      <div id="translations">
+        <translation v-for="translation in translations" track-by="$index" :index="$index">{{ translation }}</translation>
+      </div>
+
+      <a href="javascript:void(0)" class="btn btn-success" @click="saveAction">
+        <i class="glyphicon glyphicon-ok"></i>
+        Salvar
       </a>
-    </div>
-
-    <div id="translations">
-      <translation v-for="translation in translations" track-by="$index" :index="$index">{{ translation }}</translation>
-    </div>
-
-    <a href="javascript:void(0)" class="btn btn-success" @click="saveAction">
-      <i class="glyphicon glyphicon-ok"></i>
-      Salvar
-    </a>
-    <a href="#admin/words" class="btn btn-danger">
-      <i class="glyphicon glyphicon-remove"></i>
-      Cancelar
-    </a>
-  </form>
+      <a href="#admin/words" class="btn btn-danger">
+        <i class="glyphicon glyphicon-remove"></i>
+        Cancelar
+      </a>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -110,6 +112,7 @@
       },
       saveAction() {
         this.update({
+          type: this.form.type,
           word: this.form.word,
           observation: this.form.observation
         })
